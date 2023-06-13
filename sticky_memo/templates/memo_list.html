@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <title>Sticky memo</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <button type="button" class="new-btn">새 메모</button>
+        <a href="index.html" class="exit-btn">나가기</a>
+      </header>
+      <ul>
+        {% block get_memo %}
+        {% for memo in memos %}
+        <li class="memo">
+            <p class="title">{{ memo.title }}</p>
+            <p class="content">{{ memo.content }}</p>
+            <div class="btn-wrap">
+                <button type="button" class="open-btn">메모 열기</button>
+                <button type="button" class="delete-btn">메모 삭제</button>
+            </div>
+        </li>
+        {% endfor %}
+        {% endblock get_memo %}
+      </ul>
+    </div>
+
+    <!-- modal -->
+    <div class="hidden modal-wrap">
+      <form class="upload-form">
+        <div class="upload-btn-wrap">
+          <button type="submit" class="upload-btn">메모 저장</button>
+          <button type="button" class="close-btn">X</button>
+        </div>
+        <div class="input-wrap">
+          <label for="title" class="hidden">제목</label>
+          <input type="text" id="title" />
+          <label for="contents" class="hidden">내용</label>
+          <textarea id="contents"></textarea>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="./js/memo.js"></script>
+</html>

@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from memo import views as memo_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 특정 url ”my-home”에 들어가면 “hello world!”를 표시해보기
-    path('my-home/', views.my_home)
+    path('my-home/', views.my_home),
+    path('memo/', memo_views.get_all_memo)
 ]

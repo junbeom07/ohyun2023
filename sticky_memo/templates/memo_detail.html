@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Sticky memo</title>
+  </head>
+  <body>
+	<div class="wrap">
+      <header>
+        <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
+        <a href="index.html" class="exit-btn">나가기</a>
+      </header>
+    </div>
+
+      
+        <form class="upload-form">
+          <div class="upload-btn-wrap">
+            <button type="submit" class="upload-btn">메모 저장</button>
+            <button type="button" class="close-btn">X</button>
+          </div>
+          <div class="input-wrap">
+            <input type="text" id="title" value={{ memo.title }} />
+            <textarea id="contents">{{ memo.content }}</textarea> 
+          </div>
+        </form>
+  </body>
+  <script src="{% static 'js/memo.js' %}"></script>
+</html>

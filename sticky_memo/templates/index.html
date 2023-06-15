@@ -1,16 +1,17 @@
-<!DOCTYPE html>c
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="{% static 'css/reset.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
     <title>Sticky memo</title>
   </head>
   <body class="index">
     <h1>Sticky Memo</h1>
-    <img src="./src/img/mainlogo.png" alt="퇴근하는 자바독" class="logo" />
-    <a class="enter-btn" href="./memo.html">입장하기</a>
+    <img src="{% static 'src/img/mainlogo.png' %}" alt="퇴근하는 자바독" class="logo" />
+    <a class="enter-btn" href="{% url 'memo_list' %}">입장하기</a>
   </body>
 </html>

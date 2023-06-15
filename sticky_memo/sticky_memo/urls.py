@@ -22,5 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # 특정 url ”my-home”에 들어가면 “hello world!”를 표시해보기
     path('my-home/', views.my_home),
-    path('memo/', memo_views.get_all_memo)
+    path('memo/', memo_views.get_all_memo, name="memo_list"),
+    path('', views.index, name='main'),
+    path('memo/<int:id>/', memo_views.get_memo, name='memo_detail'),
+    path('memo/create/', memo_views.create_memo, name= "memo_create")
 ]

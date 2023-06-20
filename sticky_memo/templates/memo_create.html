@@ -14,7 +14,7 @@
     <div class="wrap">
       <header>
         <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
-        <a href="./index.html" class="exit-btn">나가기</a>
+        <a href="{% url 'main' %}" class=exit-btn">나가기</a>
 
       </header>
         <div>
@@ -22,7 +22,7 @@
               {% csrf_token %}
               <div class="upload-btn-wrap">
                 <button type="submit" class="upload-btn">메모 저장</button>
-                <button type="button" class="close-btn">X</button>
+                <button type="button" class="close-btn"><a href="{% url 'memo_list'%}">x</a></button>
               </div>
               <div class="input-wrap">
                 <input type="text" id="title" name="title" placeholder="제목을 입력해주세요" />

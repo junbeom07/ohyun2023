@@ -14,7 +14,7 @@
     <div class="wrap">
       <header>
         <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
-        <a href="index.html" class="exit-btn">나가기</a>
+        <a href="{% url 'main' %}" class=exit-btn">나가기</a>
       </header>
       <ul>
         {% block get_memo %}
@@ -23,8 +23,11 @@
             <p class="title">{{ memo.title }}</p>
             <p class="content">{{ memo.content }}</p>
             <div class="btn-wrap">
-                <a href="{% url 'memo_detail' memo.id %}" class="open-btn">메모 열기</a>
-                <button type="button" class="delete-btn">메모 삭제</button>
+              <button class="open-btn"><a href="{% url 'memo_detail' memo.id %}" class="open-btn">메모 열기</a>
+                <form method= "POST" action="{% url 'memo_delete' memo.id %}">
+                  {%csrf_token%}
+                <button type="submit" class="delete-btn">메모 삭제</button>
+              </form>
             </div>
         </li>
         {% endfor %}
@@ -32,21 +35,7 @@
       </ul>
     </div>
 
-    <!-- modal -->
-    <div class="hidden modal-wrap">
-      <form class="upload-form">
-        <div class="upload-btn-wrap">
-          <button type="submit" class="upload-btn">메모 저장</button>
-          <button type="button" class="close-btn">X</button>
-        </div>
-        <div class="input-wrap">
-          <label for="title" class="hidden">제목</label>
-          <input type="text" id="title" />
-          <label for="contents" class="hidden">내용</label>
-          <textarea id="contents"></textarea>
-        </div>
-      </form>
-    </div>
+
   </body>
   <script src="./js/memo.js"></script>
-</html>s
+</html>

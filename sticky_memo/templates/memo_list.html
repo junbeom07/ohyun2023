@@ -1,41 +1,18 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/reset.css'%}" />
-    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
-    <title>Sticky memo</title>
-  </head>
-  <body>
-    <div class="wrap">
-      <header>
-        <a href={% url 'memo_create' %} class="new-btn">새 메모</a>
-        <a href="{% url 'main' %}" class=exit-btn">나가기</a>
-      </header>
-      <ul>
-        {% block get_memo %}
-        {% for memo in memos %}
-        <li class="memo">
-            <p class="title">{{ memo.title }}</p>
-            <p class="content">{{ memo.content }}</p>
-            <div class="btn-wrap">
-              <button class="open-btn"><a href="{% url 'memo_detail' memo.id %}" class="open-btn">메모 열기</a>
-                <form method= "POST" action="{% url 'memo_delete' memo.id %}">
-                  {%csrf_token%}
-                <button type="submit" class="delete-btn">메모 삭제</button>
-              </form>
-            </div>
-        </li>
-        {% endfor %}
-        {% endblock get_memo %}
-      </ul>
-    </div>
-
-
-  </body>
-  <script src="./js/memo.js"></script>
-</html>
+{% extends 'memo.html' %}
+<ul>
+  {% block get_all_memo %}
+  {% for memo in memos %}
+  <li class="memo">
+      <p class="title">{{ memo.title }}</p>
+      <p class="content">{{ memo.content }}</p>
+      <div class="btn-wrap">
+        <button class="open-btn"><a href="{% url 'memo_detail' memo.id %}" class="open-btn">메모 열기</a>
+          <form method= "POST" action="{% url 'memo_delete' memo.id %}">
+            {%csrf_token%}
+          <button type="submit" class="delete-btn">메모 삭제</button>
+        </form>
+      </div>
+  </li>
+  {% endfor %}
+</ul>
+{%end block%}

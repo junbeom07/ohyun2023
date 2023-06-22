@@ -14,33 +14,9 @@
         <button type="button" class="new-btn">새 메모</button>
         <a href= "{% url 'main' %}" class=exit-btn">나가기</a>
       </header>
-      <ul>
-        <li class="memo">
-          <p class="title">1번 메모</p>
-          <p class="content">새로운 메로나를 작성해봅시다</p>
-          <div class="btn-wrap">
-            <button type="button" class="open-btn">메모 열기</button>
-            <button type="button" class="delete-btn">메모 삭제</button>
-          </div>
-        </li>
-      </ul>
-    </div>
 
-    <!-- modal -->
-    <div class="hidden modal-wrap">
-      <form class="upload-form">
-        <div class="upload-btn-wrap">
-          <button type="submit" class="upload-btn">메모 저장</button>
-          <button type="button" class="close-btn">X</button>
-        </div>
-        <div class="input-wrap">
-          <label for="title" class="hidden">제목</label>
-          <input type="text" id="title" />
-          <label for="contents" class="hidden">내용</label>
-          <textarea id="contents"></textarea>
-        </div>
-      </form>
     </div>
+    {% block get_all_memo %}{%end block%}
   </body>
   <script src="./js/memo.js"></script>
 </html>
